@@ -1,0 +1,2 @@
+/usr/bin/ar qc libeigen-cddlib.a  CMakeFiles/eigen-cddlib.dir/src/Polyhedron.cpp.o
+/usr/bin/ranlib libeigen-cddlib.a
