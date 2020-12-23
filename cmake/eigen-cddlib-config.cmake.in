@@ -13,7 +13,7 @@
 # Finds the eigen-cddlib library for integration into CMake projects.
 #
 # This will define the following imported targets:
-#    cdd::eigen-cddlib
+#    eigen-cdd::eigen-cddlib
 #
 # In addition, following variables will also be defined:
 #    eigen-cddlib_FOUND
@@ -39,21 +39,19 @@ find_package(cdd REQUIRED)
 # Pacakge contents
 #==
 
-if(NOT TARGET cdd::eigen-cddlib)
+if(NOT TARGET eigen-cdd::eigen-cddlib)
   include(${CMAKE_CURRENT_LIST_DIR}/eigen-cddlib-targets.cmake)
-  message(cdd::eigen-cddlib not a target yet)
+  message(eigen-cdd::eigen-cddlib not a target yet)
 endif()
 
-message(something: ${eigen-cddlib_INCLUDE_DIRECTORIES})
-get_target_property(eigen-cddlib_INCLUDE_DIRS cdd::eigen-cddlib INTERFACE_INCLUDE_DIRECTORIES)
-get_target_property(eigen-cddlib_LIBRARIES cdd::eigen-cddlib INTERFACE_LINK_LIBRARIES)
-list(APPEND eigen-cddlib_LIBRARIES cdd::eigen-cddlib)
+get_target_property(eigen-cddlib_INCLUDE_DIRS eigen-cdd::eigen-cddlib INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(eigen-cddlib_LIBRARIES eigen-cdd::eigen-cddlib INTERFACE_LINK_LIBRARIES)
+list(APPEND eigen-cddlib_LIBRARIES eigen-cdd::eigen-cddlib)
 
 #==
 # Pacakge configuration check
 #==
-message(something: ${eigen-cddlib_INCLUDE_DIRS})
-message(something: ${eigen-cddlib_LIBRARIES})
+
 find_package_handle_standard_args(eigen-cddlib
   REQUIRED_VARS
     eigen-cddlib_VERSION

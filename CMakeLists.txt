@@ -33,8 +33,8 @@ set(DENABLE_PRECOMPILED_HEADERS=OFF)
 # Eigen3
 find_package(Eigen3 CONFIG REQUIRED)
 
-# Apt-get package of C libcdd-dev project (might not find it)
-find_package(cdd REQUIRED)
+# Apt-get package of C libcdd-dev project
+find_package(cdd CONFIG REQUIRED)
 
 #==
 # Build target libraries
@@ -47,7 +47,7 @@ set(${PROJECT_NAME}_SRC
 # TODO might need to consider different library type (static vs shared)
 
 add_library(${PROJECT_NAME} STATIC ${${PROJECT_NAME}_SRC})
-#message(something )
+
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
@@ -59,16 +59,17 @@ target_link_libraries(${PROJECT_NAME}
         )
 target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC "${EIGEN3_INCLUDE_DIR}")
 target_compile_options(${PROJECT_NAME} PUBLIC -fPIC)
-add_library(cdd::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
-#target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
+add_library(eigen-cdd::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
 
+# TODO add this
 add_subdirectory(tests)
 
 
 #==
 # Package targets
 #==
-
+#message(ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS ${PROJECT_NAME}
         EXPORT ${PROJECT_NAME}-targets
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -77,13 +78,13 @@ install(TARGETS ${PROJECT_NAME}
         )
 
 export(TARGETS ${PROJECT_NAME}
-        NAMESPACE cdd::
+        NAMESPACE eigen-cdd::
         FILE ${PROJECT_NAME}-targets.cmake
         )
 
 install(EXPORT ${PROJECT_NAME}-targets
         FILE ${PROJECT_NAME}-targets.cmake
-        NAMESPACE cdd::
+        NAMESPACE eigen-cdd::
         DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/cmake
         )
 

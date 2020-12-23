@@ -16,7 +16,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget cdd::eigen-cddlib)
+foreach(_expectedTarget eigen-cdd::eigen-cddlib)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -41,18 +41,18 @@ unset(_targetsNotDefined)
 unset(_expectedTargets)
 
 
-# Create imported target cdd::eigen-cddlib
-add_library(cdd::eigen-cddlib STATIC IMPORTED)
+# Create imported target eigen-cdd::eigen-cddlib
+add_library(eigen-cdd::eigen-cddlib STATIC IMPORTED)
 
-set_target_properties(cdd::eigen-cddlib PROPERTIES
+set_target_properties(eigen-cdd::eigen-cddlib PROPERTIES
   INTERFACE_COMPILE_OPTIONS "-fPIC"
   INTERFACE_INCLUDE_DIRECTORIES "/home/johannes/Development/deepgait/cmake_ws/src/eigen-cddlib/include;/usr/local/include/eigen3"
   INTERFACE_LINK_LIBRARIES "cdd::cdd"
 )
 
-# Import target "cdd::eigen-cddlib" for configuration "Debug"
-set_property(TARGET cdd::eigen-cddlib APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
-set_target_properties(cdd::eigen-cddlib PROPERTIES
+# Import target "eigen-cdd::eigen-cddlib" for configuration "Debug"
+set_property(TARGET eigen-cdd::eigen-cddlib APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
+set_target_properties(eigen-cdd::eigen-cddlib PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
   IMPORTED_LOCATION_DEBUG "/home/johannes/Development/deepgait/cmake_ws/src/eigen-cddlib/cmake-build-debug/libeigen-cddlib.a"
   )
