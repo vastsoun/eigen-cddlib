@@ -23,7 +23,7 @@ include(CMakePackageConfigHelpers)
 #==
 
 option(BUILD_TESTING "Build unit tests." ON)
-option(BUILD_TEST_STATIC_BOOST "Build unit tests with static boost libraries" OFF)
+option(BUILD_TEST_STATIC_BOOST "Build unit tests with static boost libraries" ON)
 set(DENABLE_PRECOMPILED_HEADERS=OFF)
 
 #==
@@ -46,7 +46,7 @@ set(${PROJECT_NAME}_SRC
 
 # TODO might need to consider different library type (static vs shared)
 
-add_library(${PROJECT_NAME} STATIC ${${PROJECT_NAME}_SRC})
+add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_SRC})
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC
@@ -63,7 +63,7 @@ add_library(eigen-cdd::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
 
 # TODO add this
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 
 #==
@@ -78,13 +78,13 @@ install(TARGETS ${PROJECT_NAME}
         )
 
 export(TARGETS ${PROJECT_NAME}
-        NAMESPACE eigen-cdd::
+        NAMESPACE ${PROJECT_NAME}::
         FILE ${PROJECT_NAME}-targets.cmake
         )
 
 install(EXPORT ${PROJECT_NAME}-targets
         FILE ${PROJECT_NAME}-targets.cmake
-        NAMESPACE eigen-cdd::
+        NAMESPACE ${PROJECT_NAME}::
         DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/cmake
         )
 

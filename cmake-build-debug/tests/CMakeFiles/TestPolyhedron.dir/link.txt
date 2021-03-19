@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/TestPolyhedron.dir/TestPolyhedron.cpp.o  -o TestPolyhedron  -Wl,-rpath,/usr/local/lib /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so ../libeigen-cddlib.a /usr/local/lib/libcdd.so 

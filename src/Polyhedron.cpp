@@ -14,8 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "eigen-cdd/Polyhedron.h"
+#include <eigen-cddlib/Polyhedron.h>
 #include <fstream>
+#include "iostream"
 
 namespace Eigen {
 
@@ -123,7 +124,15 @@ bool Polyhedron::doubleDescription(const Eigen::MatrixXd& matrix, bool isFromGen
 
     if (polytope_ != nullptr)
         dd_FreePolyhedra(polytope_);
-
+/*
+    // Delete redundancies
+    dd_rowset impl_linset, redset;
+    dd_rowindex newpos;
+    std::cout << "\ndd matrix before dd_MatrixRedundancyRemove:\n";
+    dd_WriteMatrix(stdout, matPtr_);
+    bool success = dd_MatrixRedundancyRemove(&matPtr_, &redset, &newpos, &err_);
+    std::cout << "\ndd matrix after dd_MatrixRedundancyRemove:\n";
+    dd_WriteMatrix(stdout, matPtr_);*/
     polytope_ = dd_DDMatrix2Poly(matPtr_, &err_);
     return (err_ == dd_NoError) ? true : false;
 }

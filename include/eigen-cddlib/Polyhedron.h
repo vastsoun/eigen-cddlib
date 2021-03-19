@@ -88,6 +88,8 @@ public:
     /* Get a readable error message for the last conversion error.
      * \return String for last error message.
      */
+
+
     std::string lastErrorMessage();
 
 private:

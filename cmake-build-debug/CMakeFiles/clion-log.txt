@@ -1,5 +1,0 @@
-/home/johannes/Tools/clion-2020.2.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/johannes/Development/deepgait/cmake_ws/src/eigen-cddlib
--- Found Boost: /usr/include (found version "1.65.1") found components: unit_test_framework 
--- Configuring done
--- Generating done
--- Build files have been written to: /home/johannes/Development/deepgait/cmake_ws/src/eigen-cddlib/cmake-build-debug
