@@ -131,7 +131,7 @@ bool Polyhedron::doubleDescription(const Eigen::MatrixXd& matrix, bool isFromGen
 //    std::cout << "\ndd matrix before dd_MatrixRedundancyRemove:\n";
 //    dd_WriteMatrix(stdout, matPtr_);
     bool success = dd_MatrixRedundancyRemove(&matPtr_, &redset, &newpos, &err_);
-    std::cout << "\ndd matrix after dd_MatrixRedundancyRemove:\n";
+    //std::cout << "\ndd matrix after dd_MatrixRedundancyRemove:\n";
     dd_WriteMatrix(stdout, matPtr_);
     polytope_ = dd_DDMatrix2Poly(matPtr_, &err_);
     return (err_ == dd_NoError) ? true : false;
