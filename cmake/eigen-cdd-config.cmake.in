@@ -10,52 +10,54 @@
 # Authors: Vassilios Tsounis
 #=============================================================================
 #
-# Finds the eigen-cddlib library for integration into CMake projects.
+# Finds the eigen-cdd library for integration into CMake projects.
 #
 # This will define the following imported targets:
-#    eigen-cdd::eigen-cddlib
+#    eigen-cdd::eigen-cdd
 #
 # In addition, following variables will also be defined:
-#    eigen-cddlib_FOUND
-#    eigen-cddlib_INCLUDE_DIRS
-#    eigen-cddlib_LIBRARIES
+#    eigen-cdd_FOUND
+#    eigen-cdd_INCLUDE_DIRS
+#    eigen-cdd_LIBRARIES
 #=============================================================================
 include(FindPackageHandleStandardArgs)
 
 # Unset found flag to ensure correct package configuration
-unset(eigen-cddlib_FOUND)
+unset(eigen-cdd_FOUND)
 
 #==
 # Dependencies
 #==
 
-# Eigen3
+# Add project cmake directory for loading dependency modules
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
+
+# cddlib: A C implementation of the Double Description Method of Motzkin et al.
+find_package(CDD MODULE REQUIRED)
+
+# Eigen: A C++ template library for linear algebra
 find_package(Eigen3 CONFIG REQUIRED)
 
-# Apt-get package of C libcdd-dev project (might not find it)
-find_package(cdd REQUIRED)
-
 #==
-# Pacakge contents
+# Package contents
 #==
 
-if(NOT TARGET eigen-cdd::eigen-cddlib)
-  include(${CMAKE_CURRENT_LIST_DIR}/eigen-cddlib-targets.cmake)
-  message(eigen-cdd::eigen-cddlib not a target yet)
+if(NOT TARGET eigen-cdd::eigen-cdd)
+  include(${CMAKE_CURRENT_LIST_DIR}/eigen-cdd-targets.cmake)
 endif()
 
-get_target_property(eigen-cddlib_INCLUDE_DIRS eigen-cdd::eigen-cddlib INTERFACE_INCLUDE_DIRECTORIES)
-get_target_property(eigen-cddlib_LIBRARIES eigen-cdd::eigen-cddlib INTERFACE_LINK_LIBRARIES)
-list(APPEND eigen-cddlib_LIBRARIES eigen-cdd::eigen-cddlib)
+get_target_property(eigen-cdd_INCLUDE_DIRS eigen-cdd::eigen-cdd INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(eigen-cdd_LIBRARIES eigen-cdd::eigen-cdd INTERFACE_LINK_LIBRARIES)
+list(APPEND eigen-cdd_LIBRARIES eigen-cdd::eigen-cdd)
 
 #==
-# Pacakge configuration check
+# Package configuration check
 #==
 
-find_package_handle_standard_args(eigen-cddlib
+find_package_handle_standard_args(eigen-cdd
   REQUIRED_VARS
-    eigen-cddlib_VERSION
-    eigen-cddlib_INCLUDE_DIRS
+    eigen-cdd_VERSION
+    eigen-cdd_INCLUDE_DIRS
     eigen-cddlib_LIBRARIES
 )
 
