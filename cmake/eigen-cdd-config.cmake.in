@@ -58,16 +58,16 @@ find_package_handle_standard_args(eigen-cdd
   REQUIRED_VARS
     eigen-cdd_VERSION
     eigen-cdd_INCLUDE_DIRS
-    eigen-cddlib_LIBRARIES
+    eigen-cdd_LIBRARIES
 )
 
-if(eigen-cddlib_FOUND)
+if(eigen-cdd_FOUND)
   message(STATUS "eigen-cddlib:")
-  message(STATUS "  Version: ${eigen-cddlib_VERSION}")
-  message(STATUS "  Includes: ${eigen-cddlib_INCLUDE_DIRS}")
-  message(STATUS "  Libraries: ${eigen-cddlib_LIBRARIES}")
+  message(STATUS "  Version: ${eigen-cdd_VERSION}")
+  message(STATUS "  Includes: ${eigen-cdd_INCLUDE_DIRS}")
+  message(STATUS "  Libraries: ${eigen-cdd_LIBRARIES}")
 endif()
 
-mark_as_advanced(eigen-cddlib_FOUND eigen-cddlib_INCLUDE_DIRS eigen-cddlib_LIBRARIES)
+mark_as_advanced(eigen-cdd_FOUND eigen-cdd_INCLUDE_DIRS eigen-cdd_LIBRARIES)
 
 # EOF
