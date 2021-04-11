@@ -22,7 +22,7 @@
 #include <utility>
 #include <string>
 
-#include "/home/johannes/Development/deepgait/cmake_ws/src/eigen-cddlib/include/eigen-cddlib/Polyhedron.h"
+#include <eigen-cddlib/Polyhedron.h>
 
 namespace {
     constexpr char DD_NO_ERROR_STRING[] = "*No Error found.\n";
