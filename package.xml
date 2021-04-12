@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!--Package Header-->
+  <name>eigen_cddlib</name>
+  <version>0.0.0</version>
+  <description>An Eigen C++ wrapper for Komei Fukuda's cdd library.</description>
+  <license>Proprietary</license>
+  <url type="website">http://github.com/vastsoun/eigen-cddlib</url>
+  <maintainer email="tsounisv@ethz.ch">Vassilios Tsounis</maintainer>
+  <author email="tsounisv@ethz.ch">Vassilios Tsounis</author>
+  <!--Package Dependencies-->
+  <buildtool_depend>cmake</buildtool_depend>
+  <exec_depend>catkin</exec_depend>
+  <build_depend>eigen3</build_depend>
+  <!--Package Export-->
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>
