@@ -22,7 +22,7 @@
 #include <utility>
 #include <string>
 
-#include <eigen-cddlib/Polyhedron.h>
+#include <eigen-cdd/Polyhedron.h>
 
 namespace {
     constexpr char DD_NO_ERROR_STRING[] = "*No Error found.\n";
