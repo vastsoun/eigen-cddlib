@@ -38,6 +38,7 @@ class EIGEN_CDDLIB_DLLAPI Polyhedron {
 public:
     /* Default constructor that set cdd global constants. */
     Polyhedron();
+    
     /* Free the pointers and unset the cdd global constants. */
     ~Polyhedron();
 
@@ -48,6 +49,7 @@ public:
      * \return true if the conversion was successful.
      */
     bool setHrep(const Eigen::MatrixXd& A, const Eigen::VectorXd& b);
+    
     /* Treat the inputs as a V-representation and compute its H-representation.
      * V-polyhedron is such that \f$ A = [v r]^T, b=[1^T 0^T]^T \f$
      * with A composed of \f$ v \f$, the vertices, \f$ r \f$, the rays,
@@ -57,6 +59,7 @@ public:
      * \return true if the conversion was successful.
      */
     bool setVrep(const Eigen::MatrixXd& A, const Eigen::VectorXd& b);
+    
     /* Get the V-representation of the polyhedron.
      * V-polyhedron is such that \f$ A = [v r]^T, b=[1^T 0^T]^T \f$
      * with A composed of \f$ v \f$, the vertices, \f$ r \f$, the rays,
@@ -64,6 +67,7 @@ public:
      * \return Pair of vertex-ray matrix and vector of the V-representation.
      */
     VrepXd vrep() const;
+    
     /* Get the H-representation of the polyhedron.
      * H-polyhedron is such that \f$ Ax \leq b \f$.
      * \return Pair of inequality matrix and inequality vector of the H-representation.
@@ -72,6 +76,7 @@ public:
 
     /* Print the H-representation of the polyhedron */
     void printHrep() const;
+    
     /* Print the V-representation of the polyhedron */
     void printVrep() const;
 
@@ -80,16 +85,16 @@ public:
      * \return true if the conversion was successful.
      */
     bool setRays(const Eigen::MatrixXd& R);
+    
     /* Set the polyhedron from a matrix \f$ V = [v]^T$ of stacked vertices.
      * \param V m x n matrix of stacked vertices (each vertex has dimension n).
      * \return true if the conversion was successful.
      */
     bool setVertices(const Eigen::MatrixXd& V);
+    
     /* Get a readable error message for the last conversion error.
      * \return String for last error message.
      */
-
-
     std::string lastErrorMessage();
 
 private:
