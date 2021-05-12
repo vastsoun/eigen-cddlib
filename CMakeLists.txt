@@ -49,14 +49,13 @@ add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_SRC})
 target_include_directories(${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-    $<BUILD_INTERFACE:${CDD_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>
 )
 target_link_libraries(${PROJECT_NAME}
   PUBLIC
     cdd::cdd
+    Eigen3::Eigen
 )
-target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC "${EIGEN3_INCLUDE_DIR}")
 target_compile_options(${PROJECT_NAME} PUBLIC -fPIC)
 add_library(eigen-cdd::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
